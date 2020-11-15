@@ -168,6 +168,9 @@ router.get('/exportMc', function(req,res){
   });
 });
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 74ea3568b746501aa8248aaea71360838f65bb74
 module.exports = router;

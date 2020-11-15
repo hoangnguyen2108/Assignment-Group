@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 let Survey = require('../models/surveys');
+=======
+>>>>>>> 74ea3568b746501aa8248aaea71360838f65bb74
 let express = require('express');
 let router = express.Router();
 // Modules required for database
@@ -7,8 +10,11 @@ let mongoose = require('mongoose');
 let passport = require('passport');
 // Moments.js for time and date manipulation
 let moment = require('moment');
+<<<<<<< HEAD
 let surveyController = require('../controller/survey');
 
+=======
+>>>>>>> 74ea3568b746501aa8248aaea71360838f65bb74
 
 // Async
 let async = require('async');
@@ -113,9 +119,13 @@ router.post('/tfsurvey/:id', (req, res, next) =>{
     // If err
     if (err) {
       console.error(err);
+<<<<<<< HEAD
     } 
     else {
       /*
+=======
+    } else {
+>>>>>>> 74ea3568b746501aa8248aaea71360838f65bb74
       // Number of question in this survey
       numQuestions = question.questions.length;
       // surveyQUestions stores JSON objects for questions
@@ -129,7 +139,10 @@ router.post('/tfsurvey/:id', (req, res, next) =>{
         // True and False value
         let trueV = question.questions[i].true;
         let falseV = question.questions[i].false;
+<<<<<<< HEAD
         
+=======
+>>>>>>> 74ea3568b746501aa8248aaea71360838f65bb74
 
         // If parsedJSON's key (_id for TfQuestion) value is true
         if (parsedJSON[questionid] == 'true'){
@@ -138,10 +151,15 @@ router.post('/tfsurvey/:id', (req, res, next) =>{
         } else {
           question.questions[i].false = falseV + 1;
         }
+<<<<<<< HEAD
         
       }
       question.save();  
       */    
+=======
+      }
+      question.save();      
+>>>>>>> 74ea3568b746501aa8248aaea71360838f65bb74
     }
   });
   // JUST TO TEST
@@ -400,6 +418,7 @@ router.post('/tfq', requireAuth, (req, res, next) =>{
   })
 })
 
+<<<<<<< HEAD
 /* GET to perform Deletion for True and False Surveys - DELETE Operation */
 router.get('/delete/:id', requireAuth, surveyController.performDelete);
 
@@ -422,5 +441,7 @@ router.post('/mcsurvey/:id', requireAuth, surveyController.processEditPageMC);
 
 
 
+=======
+>>>>>>> 74ea3568b746501aa8248aaea71360838f65bb74
 module.exports = router;
 

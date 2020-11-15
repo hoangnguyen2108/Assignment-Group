@@ -13,6 +13,7 @@
         <form class="form" method="post">
           <% for (let i = 0; i < tfquestions.length; i++) { %>
           <div class="jumbotron col-md-12" id="tfjumbotron">
+<<<<<<< HEAD
             <span class="col-md-9" id="questionTitle"><input name="<%=tfquestions[i]%>" class="form-control" type="text" value="<%= tfquestions[i].question %>"></span>
             <span class="col-md-3" id="tfchoice">
             <h3>True <input type="radio" name="<%= tfquestions[i]._id %>" value="true" > | False <input type="radio" name="<%= tfquestions[i]._id %>" value="false"></h3>
@@ -20,6 +21,15 @@
           </div>
           <%}%>
           <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Update</button>
+=======
+            <span class="col-md-9" id="questionTitle"><h3>Question: "<%= tfquestions[i].question %>"</h3></span>
+            <span class="col-md-3" id="tfchoice">
+            <h3>True <input type="radio" name="<%= tfquestions[i]._id %>" value="true" required> | False <input type="radio" name="<%= tfquestions[i]._id %>" value="false" required></h3>
+            </span>
+          </div>
+          <%}%>
+          <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Submit</button>
+>>>>>>> 74ea3568b746501aa8248aaea71360838f65bb74
           <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
         </form> <!-- .form -->
       </div> <!-- body .container.row.col-msd-offset-3 col-md-6 -->
