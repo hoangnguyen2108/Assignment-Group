@@ -168,22 +168,6 @@ router.get('/exportMc', function(req,res){
   });
 });
 
-//delete
-module.exports.performDelete = (req, res, next) => {
-  let id = req.params.id;
 
-  SurveyModel.remove({_id: id}, function(err) {
-      if (err)
-      {
-          console.log(err);
-          res.end(err);
-      }
-      else
-      {
-          //refresh the Survey list
-          res.redirect('/survey');
-      }
-  });
-}
 
 module.exports = router;

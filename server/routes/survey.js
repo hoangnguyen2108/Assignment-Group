@@ -113,7 +113,9 @@ router.post('/tfsurvey/:id', (req, res, next) =>{
     // If err
     if (err) {
       console.error(err);
-    } else {
+    } 
+    else {
+      /*
       // Number of question in this survey
       numQuestions = question.questions.length;
       // surveyQUestions stores JSON objects for questions
@@ -127,6 +129,7 @@ router.post('/tfsurvey/:id', (req, res, next) =>{
         // True and False value
         let trueV = question.questions[i].true;
         let falseV = question.questions[i].false;
+        
 
         // If parsedJSON's key (_id for TfQuestion) value is true
         if (parsedJSON[questionid] == 'true'){
@@ -135,8 +138,10 @@ router.post('/tfsurvey/:id', (req, res, next) =>{
         } else {
           question.questions[i].false = falseV + 1;
         }
+        
       }
-      question.save();      
+      question.save();  
+      */    
     }
   });
   // JUST TO TEST
@@ -395,11 +400,25 @@ router.post('/tfq', requireAuth, (req, res, next) =>{
   })
 })
 
-/* GET to perform Deletion - DELETE Operation */
+/* GET to perform Deletion for True and False Surveys - DELETE Operation */
 router.get('/delete/:id', requireAuth, surveyController.performDelete);
 
-/* GET to perform Deletion - DELETE Operation */
+/* GET to perform Deletion for Multiple Choice surveys - DELETE Operation */
 router.get('/deleteMC/:id', requireAuth, surveyController.performDeleteMC);
+
+/*GET Route for displaying the edit page (True and False) - CREATE OPERATION */
+router.get('/tfsurvey/:id', requireAuth, surveyController.displayEditPageTF);
+
+/* POST route for processing Edit page (True and False) - UPDATE Operation */
+router.post('/tfsurvey/:id', requireAuth, surveyController.processEditPageTF);
+
+/*GET Route for displaying the edit page (Multiple Choice) - CREATE OPERATION */
+router.get('/mcsurvey/:id', requireAuth, surveyController.displayEditPageMC);
+
+/* POST route for processing Edit page (Multiple Choice) - UPDATE Operation */
+router.post('/mcsurvey/:id', requireAuth, surveyController.processEditPageMC);
+
+
 
 
 

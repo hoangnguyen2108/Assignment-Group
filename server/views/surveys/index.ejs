@@ -26,7 +26,7 @@
               <% for (let i = 0; i < mcquestions.length; i++){ %>
               <li class="list-group-item justify-content-between">
               <a href="/survey/deleteMC/<%= mcquestions[i]._id %>" class="btn btn-danger" role="button"> Delete </a>
-                <a href="survey/mcsurvey/<%= mcquestions[i]._id %>" class="btn btn-success" role="button" id="btnAnswerSurvey">Answer</a><span id="listTitle"><%=mcquestions[i].title%></span><span class="badge" id="listBadge">Total questions: <%=mcquestions[i].questions.length %>&nbsp Exp: <%=(mcquestions[i].expireAt).toDateString()%></span>
+                <a href="survey/mcsurvey/<%= mcquestions[i]._id %>" class="btn btn-primary" role="button" id="btnAnswerSurvey">Edit</a><span id="listTitle"><%=mcquestions[i].title%></span><span class="badge" id="listBadge">Total questions: <%=mcquestions[i].questions.length %>&nbsp Exp: <%=(mcquestions[i].expireAt).toDateString()%></span>
                 </li>
               <%}%>
               <%}%>
@@ -39,7 +39,7 @@
               <% for (let i = 0; i < tfquestions.length; i++){ %>
               <li class="list-group-item justify-content-between">
               <a href="/survey/delete/<%= tfquestions[i]._id %>" class="btn btn-danger" role="button"> Delete </a>
-                <a href="survey/tfsurvey/<%= tfquestions[i]._id %>" class="btn btn-success" role="button" id="btnAnswerSurvey">Answer</a><span id="listTitle"><%=tfquestions[i].title%></span><span class="badge" id="listBadge">
+                <a href="survey/tfsurvey/<%= tfquestions[i]._id %>" class="btn btn-primary" role="button" id="btnAnswerSurvey">Edit</a><span id="listTitle"><%=tfquestions[i].title%></span><span class="badge" id="listBadge">
                 Total questions: <%=tfquestions[i].questions.length %>&nbsp Exp: <%=(tfquestions[i].expireAt).toLocaleDateString()%> @ <%=(tfquestions[i].expireAt).toLocaleTimeString()%></span>
                 
 
