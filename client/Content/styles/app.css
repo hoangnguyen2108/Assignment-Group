@@ -1,32 +1,50 @@
 body {
-  padding-top: 100px;
-  padding-left: 50px;
+  padding-top: 51px;
+  /* padding-left: 50px;
   padding-right: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 50px; */
   font: 14px "Ubuntu", sans-serif;
   color: #ffffff;
   background-color:  grey;
 }
 
-/* Nav */
-nav.navbar-fixed-top{
-  padding-top: 25px;
-  padding-bottom: 15px;
-  min-width: 280px;
-}
-
 /* Nav container that contains toggle and brand */
-nav .container .navbar-header {
-  padding-left: 50px;
-  padding-right: 30px;
+.navbar .nav > li > a {
+  background:transparent;
+  margin: 5px 15px;
+  font: 16px "Ubuntu", sans-serif;
+}
+.logo-block{
+  padding: 0px;
+  color: #a8a878;
+}
+.logo-block img{
+  width: auto;
+  height: auto;
 }
 
-.navbar .nav > li > a {
-  background:transparent;  
-  padding-top: 15px;
-  padding-left: 30px;  
-  padding-right: 30px;
-  font: 16px "Ubuntu", sans-serif;
+/* Landing Page */
+
+.home-block {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.home-block-image {
+  border-radius: 4%;
+  display: block;
+  width: 65%;
+  height: 65%;
+  margin: auto;
+}
+
+.home-steps{
+  margin-top: -5%;
+  text-align: center;
+}
+.home-steps img.steps {
+  display: inline-block;
+  width: 10%;
+  margin: auto 20px;
 }
 
 #user-text {
@@ -99,22 +117,6 @@ ul.list-group.collapse{
 
 .logo{
   margin-top: -4%;
-}
-
-img {
-  border-radius:4%;
-  display: block;
-  margin-top: -9%;
-  width: 80%;
-  height: 72%;
-  margin: auto;
-}
-
-img.steps {
-  margin-top: -9%;
-  display: inline-block;
-  width: 20%;
-  padding-right: 40px;
 }
 
 div.team{
