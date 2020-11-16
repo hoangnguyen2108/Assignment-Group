@@ -114,24 +114,22 @@ router.post('/tfsurvey/:id', (req, res, next) => {
       console.error(err);
     }
     else {
-      /*
       // Number of question in this survey
       numQuestions = question.questions.length;
       // surveyQUestions stores JSON objects for questions
       surveyQuestions = question.questions;
       // Parses req.body when submit button is clicked
       parsedJSON = JSON.parse(JSON.stringify(req.body));
-        // For loop to iterate through all the questions
-      for (let i = 0; i < numQuestions; i++){
+      // For loop to iterate through all the questions
+      for (let i = 0; i < numQuestions; i++) {
         // Holds _id of the question (1 question inside TFQuestions)
         let questionid = surveyQuestions[i]._id;
         // True and False value
         let trueV = question.questions[i].true;
         let falseV = question.questions[i].false;
 
-
         // If parsedJSON's key (_id for TfQuestion) value is true
-        if (parsedJSON[questionid] == 'true'){
+        if (parsedJSON[questionid] == 'true') {
           question.questions[i].true = trueV + 1;
           //console.log(surveyQuestions[i].question);
         } else {
@@ -140,11 +138,75 @@ router.post('/tfsurvey/:id', (req, res, next) => {
 
       }
       question.save();
-      */
     }
   });
   // JUST TO TEST
   res.redirect('/');
+}
+);
+
+/*GET Route for displaying the edit page (True and False) - CREATE OPERATION */
+router.get('/tfsurvey/edit/:id', (req, res, next) => {
+  try {
+    let id = req.params.id;
+    // Find by ID
+    TfQuestions.findById(id, (err, question) => {
+      // If error
+      if (err) {
+        return console.error(err);
+      } else {
+        let questions = [];
+        for (let i = 0; i < question.questions.length; i++) {
+          questions.push(question.questions[i]);
+          // console.log("Questions: " + questions[i]);
+        }
+        // If no error
+        res.render('surveys/editTF', {
+          page: 'tfsurvey',
+          title: 'Edit Survey ',
+          tfquestion: question,
+          tfquestions: questions
+        });
+      }
+    })
+  } catch (err) {
+    // Log error
+    return console.error(err);
+  }
+});
+
+/*Respond to true and false survey*/
+router.post('/tfsurvey/edit/:id', (req, res, next) => {
+  // Set local id as id from req
+  let surveyid = req.params.id;
+  let numQuestions; // Holds number of questions in the survey
+  let surveyQuestions; // Holds survey's question JSON object
+  let parsedJSON; // Holds parsed JSON string
+  // Finds the survey by id
+  TfQuestions.findById(surveyid, (err, question) => {
+    // If err
+    if (err) {
+      console.error(err);
+    }
+    else {
+      // Number of question in this survey
+      numQuestions = question.questions.length;
+      // surveyQUestions stores JSON objects for questions
+      surveyQuestions = question.questions;
+      // Parses req.body when submit button is clicked
+      parsedJSON = JSON.parse(JSON.stringify(req.body));
+      // For loop to iterate through all the questions
+      for (let i = 0; i < numQuestions; i++) {
+        // Holds _id of the question (1 question inside TFQuestions)
+        let questionid = surveyQuestions[i]._id;
+
+        question.questions[i].question = parsedJSON[questionid]
+      }
+      question.save();
+    }
+  });
+  // JUST TO TEST
+  res.redirect(req.get('referer'));
 }
 );
 
@@ -401,10 +463,10 @@ router.get('/delete/:id', requireAuth, surveyController.performDelete);
 router.get('/deleteMC/:id', requireAuth, surveyController.performDeleteMC);
 
 /*GET Route for displaying the edit page (True and False) - CREATE OPERATION */
-router.get('/tfsurvey/:id', requireAuth, surveyController.displayEditPageTF);
+//router.get('/tfsurvey/edit/:id', requireAuth, surveyController.displayEditPageTF);
 
 /* POST route for processing Edit page (True and False) - UPDATE Operation */
-router.post('/tfsurvey/:id', requireAuth, surveyController.processEditPageTF);
+//router.post('/tfsurvey/edit/:id', requireAuth, surveyController.processEditPageTF);
 
 /*GET Route for displaying the edit page (Multiple Choice) - CREATE OPERATION */
 router.get('/mcsurvey/:id', requireAuth, surveyController.displayEditPageMC);

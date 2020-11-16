@@ -9,15 +9,13 @@ module.exports.displayEditPageTF = (req, res, next) => {
     let id = req.params.id;
 
     SurveyModel.TFQS.findById(id, (err, surveyToEdit) => {
-        if (err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
+        else {
             //show the edit view
-            res.render('/survey/tfsurvey', {title: 'Edit an existing survey', survey: surveyToEdit})
+            res.render('surveys/editTF', { title: 'Edit an existing survey', survey: surveyToEdit })
         }
     });
 }
@@ -25,16 +23,16 @@ module.exports.displayEditPageTF = (req, res, next) => {
 module.exports.processEditPageTF = (req, res, next) => {
     let id = req.params.id
 
-    let updatedSurvey = Survey ({
+    let updatedSurvey = Survey({
         question: {
 
             "_id": id,
-            "question": req.body.question[i]
+            "question": req.body.question[i].question
 
         },
 
         true: {
-            default : 0
+            default: 0
         },
 
         false: {
@@ -43,15 +41,13 @@ module.exports.processEditPageTF = (req, res, next) => {
 
 
     });
-    
-    SurveyModel.updateOne({_id: id}, updatedSurvey, (err) => {
-        if(err)
-        {
+
+    SurveyModel.updateOne({ _id: id }, updatedSurvey, (err) => {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
+        else {
             //refresh the survey list
             res.redirect('/survey');
         }
@@ -61,22 +57,20 @@ module.exports.processEditPageTF = (req, res, next) => {
 module.exports.processEditPageMC = (req, res, next) => {
     let id = req.params.id
 
-    let updatedSurvey = Survey ({
+    let updatedSurvey = Survey({
         "_id": id,
         "option": option,
-        "question":question,
+        "question": question,
         "title": title
-        
+
     });
-    
-    SurveyModel.updateOne({_id: id}, updatedSurvey, (err) => {
-        if(err)
-        {
+
+    SurveyModel.updateOne({ _id: id }, updatedSurvey, (err) => {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
+        else {
             //refresh the survey list
             res.redirect('/survey');
         }
@@ -88,15 +82,13 @@ module.exports.displayEditPageMC = (req, res, next) => {
     let id = req.params.id;
 
     SurveyModel.MCQS.findById(id, (err, surveyToEdit) => {
-        if (err)
-        {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
+        else {
             //show the edit view
-            res.render('/survey/mcsurvey', {title: 'Edit an existing survey', survey,MCQS: surveyToEdit})
+            res.render('/survey/mcsurvey', { title: 'Edit an existing survey', survey, MCQS: surveyToEdit })
         }
     });
 }
@@ -104,33 +96,29 @@ module.exports.displayEditPageMC = (req, res, next) => {
 
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
-  
-    SurveyModel.TFQS.remove({_id: id}, function(err) {
-        if (err)
-        {
+
+    SurveyModel.TFQS.remove({ _id: id }, function (err) {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
+        else {
             //refresh the Survey list
             res.redirect('/survey');
         }
     });
 
-    
-  }
 
-  module.exports.performDeleteMC = (req, res, next) => {
+}
+
+module.exports.performDeleteMC = (req, res, next) => {
     let id = req.params.id;
-    SurveyModel.MCQS.remove({_id: id}, function(err) {
-        if (err)
-        {
+    SurveyModel.MCQS.remove({ _id: id }, function (err) {
+        if (err) {
             console.log(err);
             res.end(err);
         }
-        else
-        {
+        else {
             //refresh the Survey list
             res.redirect('/survey');
         }
