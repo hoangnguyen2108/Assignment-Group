@@ -5,20 +5,22 @@ body {
   padding-bottom: 50px; */
   font: 14px "Ubuntu", sans-serif;
   color: #ffffff;
-  background-color:  grey;
+  background-color: grey;
 }
 
 /* Nav container that contains toggle and brand */
-.navbar .nav > li > a {
-  background:transparent;
+.navbar .nav>li>a {
+  background: transparent;
   margin: 5px 15px;
   font: 16px "Ubuntu", sans-serif;
 }
-.logo-block{
+
+.logo-block {
   padding: 0px;
   color: #a8a878;
 }
-.logo-block img{
+
+.logo-block img {
   width: auto;
   height: auto;
 }
@@ -29,6 +31,7 @@ body {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
 .home-block-image {
   border-radius: 4%;
   display: block;
@@ -37,10 +40,11 @@ body {
   margin: auto;
 }
 
-.home-steps{
+.home-steps {
   margin-top: -5%;
   text-align: center;
 }
+
 .home-steps img.steps {
   display: inline-block;
   width: 10%;
@@ -51,46 +55,46 @@ body {
   font-size: 16px;
 }
 
-#userJumbotron{
+#userJumbotron {
   background: #f2f2f2;
   border: 2px solid black;
   color: black;
 }
 
 /* SURVEYS */
-#surveyJumbotron{
+#surveyJumbotron {
   border: 5px solid #ffffff;
   width: 100%;
   margin-top: -5%;
 }
 
-#btnAnswerSurvey{
+#btnAnswerSurvey {
   width: 75px;
 }
 
-ul.list-group.collapse{
+ul.list-group.collapse {
   color: black;
 }
 
 
-#listTitle{
+#listTitle {
   font-size: 18pt;
   vertical-align: middle;
   margin-left: 5%;
 }
 
 /* T/F View */
-#questionTitle{
-  color:  grey;
+#questionTitle {
+  color: grey;
 }
 
-#tfchoice{
+#tfchoice {
   color: #000000;
   font-size: 16pt;
 }
 
 /* Create MCQ */
-#mcqJumbotron{
+#mcqJumbotron {
   color: #000000;
 }
 
@@ -99,42 +103,42 @@ ul.list-group.collapse{
   background-color: grey;
 }
 
-#listBadge{
+#listBadge {
   margin-top: 10px;
 }
 
-.breadcrumb{
+.breadcrumb {
   background-color: transparent;
 }
 
-.breadcrumb a{
+.breadcrumb a {
   color: white;
 }
 
-.emailfont a{
+.emailfont a {
   color: white;
 }
 
-.logo{
+.logo {
   margin-top: -4%;
 }
 
-div.team{
-    display: inline-block;
-    width: 95%;
-    border-radius:15%;
-    overflow:hidden;
+div.team {
+  display: inline-block;
+  width: 95%;
+  border-radius: 15%;
+  overflow: hidden;
 }
 
-.teamMemberName h4{
+.teamMemberName h4 {
   text-align: center;
 }
 
-.teamMemberInfo p{
+.teamMemberInfo p {
   text-align: center;
 }
 
-.teamMemberInfo article{
+.teamMemberInfo article {
   text-align: center;
 }
 
@@ -149,7 +153,7 @@ div.team{
   font-size: 12pt;
 }
 
-#displayTF th{
+#displayTF th {
   border: 1px solid black;
   font-size: 14pt;
   text-align: center;
@@ -157,17 +161,17 @@ div.team{
 
 /*github font */
 #githubFont {
-  color:white;
+  color: white;
 }
 
 /*social media icons */
 #socialMediaIcons {
-  color:white;
+  color: white;
 }
 
 
 /* MC CHOICE */
-#mcchoice{
+#mcchoice {
   color: black;
 }
 
@@ -181,8 +185,60 @@ div.team{
   font-size: 12pt;
 }
 
-#displayMC th{
+#displayMC th {
   border: 1px solid black;
   font-size: 14pt;
   text-align: center;
+}
+
+/* About us page*/
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.contact-cards h2 {
+  color: #333333;
+}
+
+.contact-cards .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px 5px;
+  padding: 10px 5px;
+  background-color: #333333;
+}
+
+.contact-cards a,
+.contact-cards a:hover {
+  background-color: #a8a878;
+  background-image: none;
+}
+
+.contact-section {
+  padding: 50px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.contact-us-form .input-group {
+  width: 100%;
+}
+
+.contact-section .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px 5px;
+  padding: 10px 5px;
+  background-color: #ffffff;
+}
+
+#contacts-submit {
+  background-color: #a8a878;
+  background-image: none;
+  border: 0px;
+}
+
+.contact-icons {
+  color: #a8a878;
 }
