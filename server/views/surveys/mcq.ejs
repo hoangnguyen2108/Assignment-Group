@@ -6,6 +6,12 @@
 </ol>
 <div class="container">
   <form class="form-horizontal" method="post">
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i>Create Survey</button> &nbsp;
+        <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+      </div>
+    </div>
     <div class="form-group jumbotron" id="mcqJumbotron">
       <label class="col-sm-2 control-label">Survey Title:</label>
       <div class="col-sm-4">
@@ -78,15 +84,11 @@
               </div>
             </div>
             <%}%>
-              </td>
-            </tr>
-            <%}%>
+          </td>
+        </tr>
+        <%}%>
       </table>
-      <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i>Create Survey</button> &nbsp;
-      <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+    </div>
   </form> <!-- form -->
 </div>
-</div> <!-- body.container -->
-
-
 <% include ../partials/footer.ejs %>

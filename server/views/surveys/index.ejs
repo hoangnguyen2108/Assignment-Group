@@ -1,11 +1,22 @@
 <% include ../partials/header.ejs %>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/survey">Survey</a></li>
+</ol>
 <div class="container">
-  <div style="background:transparent !important" class="jumbotron col-md-offset-2 col-md-8">
-    <h3>&nbsp;&nbsp;&nbsp; <i class="fa fa-archive"></i> Public Surveys</h3>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3><i class="fa fa-archive"></i> Public Surveys</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 padding-10">
+      <a href="survey/createNew" class="btn btn-success" role="button" id="btnPostSurvey">
+        <i class="fa fa-pencil-square-o"></i>Create a new public survey</a>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="jumbotron" id="surveyJumbotron">
+      <div class="jumbotron col-md-12">
         <h4><span style="color:#000000;">Question types<br>
           </span></h4>
         <button class="btn-default" data-toggle="collapse" data-target="#multipleList">Multiple Choice &nbsp;
@@ -26,8 +37,9 @@
           <% for (let i = 0; i < mcquestions.length; i++){ %>
           <li class="list-group-item justify-content-between">
             <a href="/survey/deleteMC/<%= mcquestions[i]._id %>" class="btn btn-danger" role="button"> Delete </a>
+            <a href="#" class="btn btn-primary" role="button" id="btnAnswerSurvey">Edit</a>
             <a href="survey/mcsurvey/<%= mcquestions[i]._id %>" class="btn btn-primary" role="button"
-              id="btnAnswerSurvey">Edit</a><span id="listTitle"><%=mcquestions[i].title%></span><span class="badge"
+              id="btnAnswerSurvey">Answer</a><span id="listTitle"><%=mcquestions[i].title%></span><span class="badge"
               id="listBadge">Total questions: <%=mcquestions[i].questions.length %>&nbsp Exp:
               <%=(mcquestions[i].expireAt).toDateString()%></span>
           </li>
@@ -55,9 +67,7 @@
             <%}%>
         </ul>
       </div>
-      <a href="survey/createNew" class="btn btn-success" role="button" id="btnPostSurvey">
-        <i class="fa fa-pencil-square-o"></i>Create a new public survey</a>
-    </div> <!-- body .container.row.col-md-offset-3 col-md-6 -->
+    </div>
   </div>
-</div> <!-- body .container -->
+</div>
 <% include ../partials/footer.ejs %>

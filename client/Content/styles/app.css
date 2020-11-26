@@ -8,6 +8,10 @@ body {
   background-color: grey;
 }
 
+.padding-10 {
+  padding: 10px;
+}
+
 /* Nav container that contains toggle and brand */
 .navbar .nav>li>a {
   background: transparent;
