@@ -299,6 +299,81 @@ router.post('/mcsurvey/:id', (req, res, next) => {
   res.redirect('/');
 });
 
+/* GET edit survey page for multiplechoice */
+router.get('/mcsurvey/edit/:id', (req, res, next) => {
+  try {
+    let id = req.params.id;
+    // Find by ID
+    McqsModel.findById(id, (err, question) => {
+      // If error
+      if (err) {
+        return console.error(err);
+      } else {
+        //empty array to store each of the question and options pulled from mongo
+        let questions = [];
+        for (let i = 0; i < question.questions.length; i++) {
+          // Stores mc questions into questions array
+          questions.push(question.questions[i]);
+          let options = [];
+
+          for (let a = 0; a < questions[i].options.length; a++) {
+            //stores each of the options into options array
+            options.push(questions[i].options[a]);
+          }
+        }
+        // If no error
+        res.render('surveys/editMC', {
+          page: 'mcsurvey',
+          title: 'Survey - Survey',
+          fullname: req.user ? req.user.firstname + ' ' + req.user.lastname : '',
+          mcquestion: question,
+          mcquestions: questions,
+
+        });
+      }
+    })
+  } catch (err) {
+    // Log error
+    return console.error(err);
+  }
+});
+
+/* Update MC Survey */
+
+router.post('/mcsurvey/edit/:id', (req, res, next) => {
+  //create variable for local id
+  let id = req.params.id;
+  let numQuestions;
+  let options;
+  let surveyQuestions;
+  let parsedJSON;
+
+  MCQSModel.findById(id, (err, question) => {
+    //error
+    if (err) {
+      console.error(err);
+      res.end(err);
+    } else {
+      numQuestions = question.questions.length;
+      surveyQuestions = question.questions;
+      options = question.questions.options;
+      parsedJSON = JSON.parse(JSON.stringify(req.body));
+      console.log("req.body: %j", parsedJSON);
+
+      for (let i = 0; i < numQuestions; i++) {
+        let questionid = surveyQuestions[i]._id;
+        question.questions[i].question = parsedJSON[questionid]
+        for (let a = 0; a < question.questions[i].options.length; a++) {
+          let optionid = question.questions[i].options[a]._id;
+          question.questions[i].options[a].option = parsedJSON[optionid]
+        }
+      }
+      question.save();
+    }
+  });
+  res.redirect(req.get('referer'));
+});
+
 /* Create new survey */
 router.get('/createNew', requireAuth, (req, res, next) => {
   res.render('surveys/create', {

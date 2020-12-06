@@ -4,13 +4,22 @@
     <div class="col-md-12">
       <div class="contact-section">
         <h1>– Contact Us –</h1>
+        <% if (locals.msgSuccess == "success") { %>
+        <div class="alert alert-success" role="alert">
+          <%= locals.displayMessage %>
+        </div>
+        <% } if (locals.msgSuccess == "failed") {%>
+        <div class="alert alert-danger" role="danger">
+          <%= locals.displayMessage %>
+        </div>
+        <% } %>
         <section class="jumbotron text-center">
           <div class="container">
             <div class="row">
               <div class="col-md-8">
                 <div class="panel panel-default well">
                   <div class="panel-body">
-                    <form action="" class="form-horizontal contact-us-form" method="post" id="contact-us-all">
+                    <form action="/contact" class="form-horizontal contact-us-form" method="post" id="contact-us-all">
                       <div class="form-group">
                         <div class="col-sm-12">
                           <div class="input-group">
